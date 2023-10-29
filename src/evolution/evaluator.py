@@ -7,6 +7,8 @@ def evaluate(individual):
     confidence = result[0]['confidence'] / 10
     area = individual.totalArea
 
-    #fitness = (10 - confidence) / 10
-    fitness = 1 - confidence * .25 - area
+    fitness = 1 - (confidence * .75) - (area * 50)
+
+    individual.exportInfo(fitness, confidence, area)
+
     return fitness

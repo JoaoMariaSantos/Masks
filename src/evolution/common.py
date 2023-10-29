@@ -5,7 +5,7 @@ def createCircle():
             'y' : random.uniform(0, 1), 
             'radius' : random.uniform(0,.2) }
 
-def clamp(x, max, min):
+def clamp(x, min, max):
     if x > max:
         return max
     if x < min:

@@ -31,6 +31,7 @@ class Population:
         #elitism
         for i in range(self.eliteSize):
             newIndividuals.append(self.individuals[i])
+            newIndividuals[i].id = i
 
         #tournament or copy
         for i in range(self.eliteSize, self.populationSize):
@@ -72,8 +73,9 @@ class Population:
         return fittest
 
     def sortByFitness(self):
-        self.individuals.sort(key = lambda x: x.fitness, reverse=True)
+        self.individuals.sort(key = lambda x: x.fitness, reverse = True)
 
     def evaluate(self, individual):
         individual.exportImage()
+        individual.calculateArea()
         individual.setFitness(evaluate(individual))
