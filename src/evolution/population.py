@@ -19,10 +19,11 @@ class Population:
         self.crossoverRate = crossoverRate
         self.tournamentSize = tournamentSize
 
+        evaluatePathValue = random.uniform(0, 1)
         for i in range(self.populationSize):
             self.individuals.append(Individual())
             self.individuals[i].id = i
-            self.evaluate(self.individuals[i])
+            self.evaluate(self.individuals[i], evaluatePathValue)
 
 
     def evolve(self):
@@ -49,8 +50,9 @@ class Population:
             newIndividuals[i].id = i
 
         #evaluate
+        evaluatePathValue = random.uniform(0, 1)
         for i in newIndividuals:
-            self.evaluate(i)
+            self.evaluate(i, evaluatePathValue)
         
         #apply new individuals
         for i in range(self.populationSize):
@@ -75,7 +77,7 @@ class Population:
     def sortByFitness(self):
         self.individuals.sort(key = lambda x: x.fitness, reverse = True)
 
-    def evaluate(self, individual):
+    def evaluate(self, individual, evaluatePathValue):
         individual.exportImage()
         individual.calculateArea()
-        individual.setFitness(evaluate(individual))
+        evaluate(individual, evaluatePathValue)

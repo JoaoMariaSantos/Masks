@@ -1,10 +1,12 @@
 from population import *
 
-populationSize = 30
-eliteSize = 2
+populationSize = 10
+eliteSize = 1
 mutationRate = .5
 crossoverRate = .5
-tournamentSize = 5
+tournamentSize = 3
+
+print('Starting')
 
 population = Population(populationSize, eliteSize, mutationRate, crossoverRate, tournamentSize)
 
