@@ -24,9 +24,9 @@ class Individual:
     def setFitness(self, fitness):
         self.fitness = fitness
 
-    def exportInfo(self, fitness, confidence, area):
+    def exportInfo(self, fitness, distance, area):
         lines = ['fitness: ' + str(fitness), 
-                 'confidence: ' + str(confidence),
+                 'distance: ' + str(distance),
                  'area: ' + str(area)]
         
         with open(self.getTextPath(), 'w') as f:

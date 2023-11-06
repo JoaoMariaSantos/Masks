@@ -64,10 +64,13 @@ class Population:
     def tournamentSelection(self):
         participants = []
 
+        #individuals in tournament
         for i in range(self.tournamentSize):
             participants.append(self.individuals[random.randrange(len(self.individuals))])
 
         fittest = participants[0]
+
+        #get fittest
         for p in participants:
             if p.fitness > fittest.fitness:
                 fittest = p

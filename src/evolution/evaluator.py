@@ -12,11 +12,16 @@ def evaluate(individual, pathValue):
 
     result = DeepFace.verify(img1_path = individual.getImagePath(), img2_path = referencePaths[pathIndex], enforce_detection = False)
     confidence = int(result['verified']) #bool verified or not
+    distance = float(result['distance']) #float distance between images from 0 to 1
     #confidence = result['distance'] #distance between faces
 
     area = individual.totalArea
 
-    fitness = 1 - (confidence * .75) - (area * 10)
+    #print()
+    #print('c: ' + str(confidence))
+    #print('d: ' + str(distance)) 
 
-    individual.exportInfo(fitness, confidence, area)
+    fitness = 1 - ((1-distance) * .75) - (area * 10)
+
+    individual.exportInfo(fitness, distance, area)
     individual.setFitness(fitness)
