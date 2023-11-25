@@ -1,0 +1,15 @@
+body, *, html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import 'imports/page';
+@import 'imports/tool';
+@import 'imports/cell';
+@import 'imports/button';
+
+@import 'imports/header';
+@import 'imports/photos';
+@import 'imports/stickers';
+@import 'imports/generate_button';
