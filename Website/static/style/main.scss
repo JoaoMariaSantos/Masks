@@ -4,6 +4,10 @@ body, *, html{
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none;
+}
+
 @import 'imports/page';
 @import 'imports/tool';
 @import 'imports/cell';
