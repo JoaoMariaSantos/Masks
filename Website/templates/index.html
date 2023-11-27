@@ -43,7 +43,7 @@
                         </form>
                     </div>
                 {% else %}
-                    <img src="{{ url_for('static',filename='uploads/' + face_img) }}" alt="">
+                    <img id="photos_face" src="{{ url_for('static',filename='uploads/' + face_img) }}" alt="">
                 {% endif %}
 
                 {% if face_error_message != null %}

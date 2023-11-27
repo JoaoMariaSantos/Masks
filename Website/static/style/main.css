@@ -67,6 +67,7 @@ button:hover, input[type=submit]:hover, input[type=reset]:hover {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
 }
 #photos h1, #photos h2 {
   text-align: center;
@@ -83,6 +84,10 @@ button:hover, input[type=submit]:hover, input[type=reset]:hover {
   justify-content: space-between;
   align-items: center;
   text-align: center;
+}
+
+#photos_face {
+  width: 20%;
 }
 
 #stickers {
