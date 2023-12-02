@@ -1,0 +1,48 @@
+$color-dark_brown: #664500;
+$color-yellow: #FFCC4D;
+$color-light_yellow: #F1DA8F;
+$color-grey: #6C746C;
+$color-white: #FCFCFB;
+
+$border: solid 1px $color-dark_brown;
+
+body, *, html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: $color-dark_brown;
+}
+
+html{
+    background-color: $color-white;
+}
+
+.hidden {
+    display: none;
+}
+
+
+@import 'fonts';
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
+body, p, input{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+}
+
+h1,h2,h3,h4{
+    font-family: 'Basteleur';
+    font-weight: bold;
+}
+
+@import 'styles/button';
+
+@import 'styles/page';
+@import 'styles/cell';
+
+@import 'styles/inputCell';
+
+@import 'styles/header';
+@import 'styles/helpButton';
+@import 'styles/photos';
+@import 'styles/stickers';

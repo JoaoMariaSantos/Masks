@@ -1,0 +1,46 @@
+//FONT BASTELEUR
+@font-face {
+    font-family: 'Basteleur';
+    src: 
+        local('Basteleur')
+        url('../resources/typography/basteleur/Basteleur-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../resources/typography/basteleur/Basteleur-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+        url('../resources/typography/basteleur/Basteleur-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Basteleur';
+    src: 
+        local('Basteleur')
+        url('../resources/typography/basteleur/Basteleur-Moonlight.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../resources/typography/basteleur/Basteleur-Moonlight.woff') format('woff'), /* Pretty Modern Browsers */
+        url('../resources/typography/basteleur/Basteleur-Moonlight.ttf')  format('truetype'); /* Safari, Android, iOS */
+
+    font-weight: normal;
+}
+
+//FONT SPACE GROTESK
+
+
+/*
+@font-face {
+    font-family: 'SpaceGrotesk';
+    src: 
+        local('SpaceGrotesk')
+        url('../resources/typography/space_grotesk/SpaceGrotesk-Bold.ttf')  format('truetype');
+
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'SpaceGrotesk';
+    src: 
+        local('SpaceGrotesk')
+        url('../resources/typography/space_grotesk/SpaceGrotesk-Regular.ttf')  format('truetype');
+
+    font-weight: normal;
+}*/
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap")

@@ -1,0 +1,41 @@
+#photos{
+    grid-column: 1 / 5;
+    grid-row: 2 / 5;
+
+    h1, h2{
+        text-align: center;
+    }
+
+    overflow: hidden;
+
+    #uploadedPhotos{
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        img{
+            width: min(60%, 300px);
+            border: solid 1px $color-dark_brown;
+        }
+    }
+
+    #photos_upload{
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        #photos_upload_input_label{
+            display: flex;
+            cursor: pointer;
+            height: 64px;
+            align-items: center;
+
+            &:hover{
+                background-color: $color-yellow !important;
+                border-radius: 16px 16px 0 16px !important;
+            }
+
+        }
+
+    }
+}

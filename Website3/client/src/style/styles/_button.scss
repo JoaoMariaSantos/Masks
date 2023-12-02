@@ -1,0 +1,13 @@
+button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    cursor: pointer;
+
+    &:hover{
+        background-color: $color-yellow !important;
+        border-radius: 16px 16px 0 16px !important;
+    }
+}
