@@ -6,10 +6,10 @@
     height: 100%;
 
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr 14fr; 
+    grid-template-rows: 2fr 1fr 1fr 13fr; 
     grid-row-gap: 8px;
 
-    .inputCell_heading, .inputCell_description{
+    .inputCell_heading, .inputCell_assurance, .inputCell_description{
         grid-row: 1;
         display: flex;
         align-items: center;
@@ -24,8 +24,11 @@
     .inputCell_description{
         grid-row: 2;
     }
-    .inputCell_body{
+    .inputCell_assurance{
         grid-row: 3;
+    }
+    .inputCell_body{
+        grid-row: 4;
 
         display: flex;
         flex-direction: column;

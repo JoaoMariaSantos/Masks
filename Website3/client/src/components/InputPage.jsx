@@ -4,6 +4,7 @@ import HelpButton from './HelpButton'
 import Photos from './Photos'
 import Stickers from './Stickers'
 import GenerateButton from './GenerateButton'
+import CodeButton from './CodeButton'
 
 function InputPage() {
 
@@ -45,10 +46,10 @@ function InputPage() {
   };
 
   return (
-    <div className='page'>
+    <div id='inputPage' className='page'>
       <div>
         <Header/>
-        <HelpButton/>
+        <CodeButton/>
         <Photos notifyPhotoChange = {handlePhotoChange}/>
         <Stickers notifyStickersChange = {handleStickersChange}/>
         {photoReady && <GenerateButton notifyGeneratePressed = {handleGeneratePressed}/>}

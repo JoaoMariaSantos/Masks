@@ -49,6 +49,9 @@ function Photos({notifyPhotoChange}) {
         <div className="inputCell_description">
           <p>Upload a photo of yourself facing foward</p>
         </div>
+        <div className="inputCell_assurance">
+          <p>It will only be used to for the generation</p>
+        </div>
         <div className="inputCell_body">
           <div id="uploadedPhotos">
             {uploadedFaceSrc && <img src={uploadedFaceSrc} alt="uploaded photo"/>}

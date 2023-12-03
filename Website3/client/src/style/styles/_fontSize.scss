@@ -1,0 +1,27 @@
+@media screen and (min-width: 1001px) {
+    h1{
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    p, label, textarea {
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    h1{
+        font-size: max(2vw, 1em);
+    }
+    
+    h2 {
+        font-size: max(1.5vw, 0.75em);
+    }
+    
+    p, label, textarea {
+        font-size: max(1.2vw, 0.6em);
+    }
+  }

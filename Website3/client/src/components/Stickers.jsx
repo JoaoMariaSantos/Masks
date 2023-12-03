@@ -38,6 +38,9 @@ function Stickers({notifyStickersChange}) {
       <div className='cell inputCell'>
         <div className='inputCell_heading'><h2>Stickers</h2></div>
         <div className='inputCell_description'><p>Tell us your plans</p></div>
+        <div className="inputCell_assurance">
+          <p>They are only used to choose your stickers</p>
+        </div>
         <div className='inputCell_body'>
         <InputStickers notifyStickersRequested = {(text) => requestStickers(text)}/>
         {stickerList.length === 0 && stickerListDiv(stickerList)}

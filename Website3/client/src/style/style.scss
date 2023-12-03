@@ -15,12 +15,16 @@ body, *, html{
 
 html{
     background-color: $color-white;
+    overflow-x: hidden;
 }
 
 .hidden {
     display: none;
 }
 
+a{
+    text-decoration: none
+}
 
 @import 'fonts';
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
@@ -35,7 +39,10 @@ h1,h2,h3,h4{
     font-weight: bold;
 }
 
+@import 'styles/fontSize';
+
 @import 'styles/button';
+@import 'styles/scrollBar';
 
 @import 'styles/page';
 @import 'styles/cell';
@@ -44,6 +51,7 @@ h1,h2,h3,h4{
 
 @import 'styles/header';
 @import 'styles/helpButton';
+@import 'styles/codeButton';
 @import 'styles/photos';
 @import 'styles/stickers';
 @import 'styles/generateButton';
