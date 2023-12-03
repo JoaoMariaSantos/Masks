@@ -1,11 +1,12 @@
 .inputCell{
     display: grid;
+    padding: 0;
 
     width: 100%;
     height: 100%;
 
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 14fr; 
+    grid-template-rows: 2fr 1fr 14fr; 
     grid-row-gap: 8px;
 
     .inputCell_heading, .inputCell_description{
@@ -14,6 +15,7 @@
         align-items: center;
         justify-content: center;
         text-align: center;
+        border-bottom: $border;
     }
 
     .inputCell_heading{

@@ -17,7 +17,7 @@ function InputImage({notifyUpload}) {
       ).then(response => response.json())
       .then(data => {
         console.log(data);
-        notifyUpload();
+        notifyUpload(data['error'][0]);
       })
       .catch(error => console.error('ERROR:', error));
     }

@@ -1,12 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-function InputStickers() {
+function InputStickers({notifyStickersRequested}) {
+
+  const [prompt, setPrompt] = useState('');
+
+  const requestStickers = () => {
+    if(prompt.length < 2) return;
+    else notifyStickersRequested(prompt);
+  }
 
   return (
-    <form id='stickers_form'>
-          <textarea type="text" name="prompt" placeholder="ex: going to a rock concert"></textarea>
-          <button type="submit" class="material-symbols-outlined cell">arrow_forward</button>
-    </form>
+    <div id='stickers_form'>
+          <textarea type="text" name="prompt" placeholder="ex: going to a rock concert" onChange={(e) => {setPrompt(e.target.value)}}></textarea>
+          <button className="material-symbols-outlined cell" onClick={requestStickers}>arrow_forward</button>
+    </div>
   )
 }
 

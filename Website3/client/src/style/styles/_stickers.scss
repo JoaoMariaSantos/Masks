@@ -6,8 +6,12 @@
         text-align: center;
     }
 
+    overflow: hidden;
+
     #stickers_form{
         position: relative;
+        left: 1vw;
+        width: calc(100% - 2vw);
         height: 64px;
         padding: 0;
 

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import InputImage from "./InputImage";
 
-function Photos() {
+function Photos({notifyPhotoChange}) {
   const [uploadedFaceSrc, setUploadedFaceSrc] = useState(null);
-  const [loadFace, setLoadFace] = useState(true);
+  const [errorFace, setErrorFace] = useState("");
+  const [loadFace, setLoadFace] = useState(false);
 
+  //gets the face photo URL after being notified of upload
   useEffect(() => {
     if(loadFace){
       fetch("/uploadedface")
@@ -17,6 +19,7 @@ function Photos() {
             console.log(faceUrl);
           } else {
             setUploadedFaceSrc(null);
+            notifyPhotoChange(false);
           }
         })
         .catch((error) => console.error("Image not available:", error));
@@ -24,9 +27,16 @@ function Photos() {
     }
   }, [loadFace]);
 
-  const handleUploadNotification = () =>{
-    console.log("photo uploaded")
-    setLoadFace(true);
+  //to be notified by child InputImage when photo is uploaded
+  const handleUploadNotification = (error) =>{
+    console.log(error);
+    setErrorFace(error);
+
+    const goodPhoto = error === "";
+
+    setLoadFace(goodPhoto);
+    notifyPhotoChange(goodPhoto);
+    if(!goodPhoto) setUploadedFaceSrc(null);
   }
 
 
@@ -34,14 +44,15 @@ function Photos() {
     <div id="photos" >
       <div className="cell inputCell">
         <div className="inputCell_heading">
-          <h2>Photos</h2>
+          <h2>Photo</h2>
         </div>
         <div className="inputCell_description">
           <p>Upload a photo of yourself facing foward</p>
         </div>
         <div className="inputCell_body">
           <div id="uploadedPhotos">
-            {uploadedFaceSrc && <img src={uploadedFaceSrc}/>}
+            {uploadedFaceSrc && <img src={uploadedFaceSrc} alt="uploaded photo"/>}
+            {errorFace !== "" && <span>{errorFace}</span>}
           </div>
         <InputImage notifyUpload={handleUploadNotification}/>
         </div>
