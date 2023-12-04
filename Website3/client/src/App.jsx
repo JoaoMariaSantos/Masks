@@ -1,14 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import InputPage from './components/InputPage'
-import HelpPage from './components/HelpPage'
+import EvolutionPage from './components/EvolutionPage'
 
 import './style/style.css'
 
 
 function App() {
+  const [isGenerating, setIsGenerating] = useState(false)
+
   return (
     <div>
-      <InputPage/>
+      {isGenerating ? <EvolutionPage/> : <InputPage/>}
     </div>
   )
 }
