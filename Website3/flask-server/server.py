@@ -61,6 +61,7 @@ def getChosenEmojis():
     if key == '': 
         return {"msg": ["error"]}
     
+    #FREE CHATGPT API -> https://github.com/ayaka14732/ChatGPTAPIFree
     openai.api_key = key
     response = openai.chat.completions.create(
         model="gpt-3.5-turbo",

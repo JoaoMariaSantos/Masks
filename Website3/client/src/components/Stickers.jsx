@@ -4,7 +4,13 @@ import StickerList from './StickerList'
 
 function Stickers({notifyStickersChange}) {
 
-  //const [stickerList, setStickerList] = useState([])
+  const [stickerList, setStickerList] = useState(null)
+
+  const inputCellClasses = () => {
+    let classes = "cell inputCell"
+    if(stickerList) classes += " inputCell_ready"
+    return classes
+  }
 
   const stickersRequested = (text) => {
       requestStickers()
@@ -35,7 +41,7 @@ function Stickers({notifyStickersChange}) {
 
   return (
     <div id='stickers'>
-      <div className='cell inputCell'>
+      <div className={inputCellClasses()}>
         <div className='inputCell_heading'><h2>Stickers</h2></div>
         <div className='inputCell_description'><p>Tell us your plans</p></div>
         <div className="inputCell_assurance">

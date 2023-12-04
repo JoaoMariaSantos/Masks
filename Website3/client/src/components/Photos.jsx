@@ -6,6 +6,12 @@ function Photos({notifyPhotoChange}) {
   const [errorFace, setErrorFace] = useState("");
   const [loadFace, setLoadFace] = useState(false);
 
+  const inputCellClasses = () => {
+    let classes = "cell inputCell"
+    if(uploadedFaceSrc) classes += " inputCell_ready"
+    return classes
+  }
+
   //gets the face photo URL after being notified of upload
   useEffect(() => {
     if(loadFace){
@@ -42,7 +48,7 @@ function Photos({notifyPhotoChange}) {
 
   return (
     <div id="photos" >
-      <div className="cell inputCell">
+      <div className={inputCellClasses()}>
         <div className="inputCell_heading">
           <h2>Photo</h2>
         </div>
@@ -50,7 +56,7 @@ function Photos({notifyPhotoChange}) {
           <p>Upload a photo of yourself facing foward</p>
         </div>
         <div className="inputCell_assurance">
-          <p>It will only be used to for the generation</p>
+          <p>It is only used to for the generation</p>
         </div>
         <div className="inputCell_input">
 

@@ -1,4 +1,4 @@
-//FONT BASTELEUR
+//FONT BASTELEUR 
 @font-face {
     font-family: 'Basteleur';
     src: 
@@ -21,26 +21,24 @@
     font-weight: normal;
 }
 
-//FONT SPACE GROTESK
-
-
-/*
-@font-face {
-    font-family: 'SpaceGrotesk';
-    src: 
-        local('SpaceGrotesk')
-        url('../resources/typography/space_grotesk/SpaceGrotesk-Bold.ttf')  format('truetype');
-
-    font-weight: bold;
-}
+//FONT CHUNK @ https://www.theleagueofmoveabletype.com/chunk
 
 @font-face {
-    font-family: 'SpaceGrotesk';
+    font-family: 'Chunk';
     src: 
-        local('SpaceGrotesk')
-        url('../resources/typography/space_grotesk/SpaceGrotesk-Regular.ttf')  format('truetype');
+        local('Chunk')
+        url('../resources/typography/chunk/ChunkFive-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../resources/typography/chunk/ChunkFive-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+        url('../resources/typography/chunk/ChunkFive-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
 
     font-weight: normal;
-}*/
+}
 
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap")
+//FONT SPACE GROTESK
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+//FONT PAYTONE ONE
+
+@import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap");
+
