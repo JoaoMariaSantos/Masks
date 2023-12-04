@@ -10,15 +10,17 @@ Project to
 
 **Prerequisites**
 
-[React](https://react.dev) - Frontend
+* [React](https://react.dev) - Frontend
 
-[Flask](https://flask.palletsprojects.com) - Backend
+* [Flask](https://flask.palletsprojects.com) - Backend
 
-[Deepface](https://github.com/serengil/deepface) - Face recognition
+* [Deepface](https://github.com/serengil/deepface) - Face recognition
 
-[ChatGPT](https://openai.com) - Fetching emojis
+* [ChatGPT](https://openai.com) - Fetching emojis
 
-[Twemoji](https://github.com/twitter/twemoji) - Translating emojis
+* [Twemoji](https://github.com/twitter/twemoji) - Translating emojis
+
+* [Noto-Emoji](https://github.com/googlefonts/noto-emoji) - Emoji files
 
 **Installing**
 
@@ -33,16 +35,16 @@ Project to
 
 **Designer & Developer**
 
-[João Maria Santos](https://github.com/JoaoMariaSantos)
+* [João Maria Santos](https://github.com/JoaoMariaSantos)
 
 **Supervisors**
 
-João Cunha
+* João Cunha
 
-Sérgio M. Rebelo
+* Sérgio M. Rebelo
 
-Pedro Silva
+* Pedro Silva
 
-Penousal Machado
+* Penousal Machado
 
-Tiago Martins
+* Tiago Martins
