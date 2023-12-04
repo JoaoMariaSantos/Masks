@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import InputStickers from './InputStickers'
+import StickerList from './StickerList'
 
 function Stickers({notifyStickersChange}) {
 
-  const [stickerList, setStickerList] = useState([])
+  //const [stickerList, setStickerList] = useState([])
 
   const stickersRequested = (text) => {
       requestStickers()
-    
   }
 
   const requestStickers = async (prompt) => {
@@ -21,7 +21,7 @@ function Stickers({notifyStickersChange}) {
     });
 
     const data = await response.json();
-    setStickerList(data.emojis);
+    //setStickerList(data.emojis);
     console.log(data);
   }
 
@@ -41,12 +41,14 @@ function Stickers({notifyStickersChange}) {
         <div className="inputCell_assurance">
           <p>They are only used to choose your stickers</p>
         </div>
-        <div className='inputCell_body'>
-        <InputStickers notifyStickersRequested = {(text) => requestStickers(text)}/>
-        {stickerList.length === 0 && stickerListDiv(stickerList)}
+        <div className='inputCell_input'>
+          <InputStickers notifyStickersRequested = {(text) => requestStickers(text)}/>
+        </div>
+        <div className='inputCell_result'>
+          <StickerList/>
+        </div>
       </div>
       </div>
-    </div>
   )
 }
 

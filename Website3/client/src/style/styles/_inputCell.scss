@@ -6,8 +6,12 @@
     height: 100%;
 
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr 1fr 13fr; 
-    grid-row-gap: 8px;
+    grid-template-rows: 2fr 1fr 1fr 3fr 8fr; 
+    grid-row-gap: 16px;
+
+    *{
+        box-sizing: border-box;
+    }
 
     .inputCell_heading, .inputCell_assurance, .inputCell_description{
         grid-row: 1;
@@ -27,8 +31,17 @@
     .inputCell_assurance{
         grid-row: 3;
     }
-    .inputCell_body{
+    .inputCell_input{
         grid-row: 4;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+    }
+    .inputCell_result{
+        grid-row: 5;
+        padding: 0;
 
         display: flex;
         flex-direction: column;

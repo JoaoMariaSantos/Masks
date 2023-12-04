@@ -148,8 +148,11 @@ button:hover, a:hover {
   width: 100%;
   height: 100%;
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr 1fr 1fr 13fr;
-  grid-row-gap: 8px;
+  grid-template-rows: 2fr 1fr 1fr 3fr 8fr;
+  grid-row-gap: 16px;
+}
+.inputCell * {
+  box-sizing: border-box;
 }
 .inputCell .inputCell_heading, .inputCell .inputCell_assurance, .inputCell .inputCell_description {
   grid-row: 1;
@@ -168,8 +171,16 @@ button:hover, a:hover {
 .inputCell .inputCell_assurance {
   grid-row: 3;
 }
-.inputCell .inputCell_body {
+.inputCell .inputCell_input {
   grid-row: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+.inputCell .inputCell_result {
+  grid-row: 5;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -271,6 +282,27 @@ button:hover, a:hover {
   top: 0;
   right: 0;
   height: 100%;
+}
+#stickers #sticker_list {
+  max-height: 100%;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+#stickers #sticker_list div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#stickers #sticker_list img {
+  max-width: 20%;
+  max-height: 80%;
+  width: auto;
+  height: auto;
 }
 
 #GenerateButton {

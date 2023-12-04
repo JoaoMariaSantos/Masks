@@ -52,12 +52,18 @@ function Photos({notifyPhotoChange}) {
         <div className="inputCell_assurance">
           <p>It will only be used to for the generation</p>
         </div>
-        <div className="inputCell_body">
+        <div className="inputCell_input">
+
+          <InputImage notifyUpload={handleUploadNotification}/>
+          
+        </div>
+        <div className="inputCell_result">
+
           <div id="uploadedPhotos">
             {uploadedFaceSrc && <img src={uploadedFaceSrc} alt="uploaded photo"/>}
             {errorFace !== "" && <span>{errorFace}</span>}
           </div>
-        <InputImage notifyUpload={handleUploadNotification}/>
+
         </div>
       </div>
     </div>
