@@ -1,16 +1,50 @@
-# Masks
+# Incognito Stickers
+
 LCD Project - Anti face recognition masks
 
+# About
+
+Project to
+
+# Getting Started
+
+**Prerequisites**
+
+* [React](https://react.dev) - Frontend
+
+* [Flask](https://flask.palletsprojects.com) - Backend
+
+* [Deepface](https://github.com/serengil/deepface) - Face recognition
+
+* [ChatGPT](https://openai.com) - Fetching emojis
+
+* [Twemoji](https://github.com/twitter/twemoji) - Translating emojis
+
+* [Noto-Emoji](https://github.com/googlefonts/noto-emoji) - Emoji files
+
+**Installing**
 
 
-experimentar formas em vez de circulos - emojis? pngs?
 
-distorção cara - máscara que é cara
-
-reconhecer outra pessoa em vez de mim?
+# Usage
 
 
 
 
-ver emojinator
-ver emojipedia - noto
+# Credits
+
+**Designer & Developer**
+
+* [João Maria Santos](https://github.com/JoaoMariaSantos)
+
+**Supervisors**
+
+* João Cunha
+
+* Sérgio M. Rebelo
+
+* Pedro Silva
+
+* Penousal Machado
+
+* Tiago Martins
