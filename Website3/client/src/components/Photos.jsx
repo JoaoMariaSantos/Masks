@@ -56,7 +56,7 @@ function Photos({notifyPhotoChange}) {
           <p>Upload a photo of yourself facing foward</p>
         </div>
         <div className="inputCell_assurance">
-          <p>It is only used to for the generation</p>
+          <p>It is only used for the generation</p>
         </div>
         <div className="inputCell_input">
 
