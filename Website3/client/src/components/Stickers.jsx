@@ -16,19 +16,19 @@ function Stickers({notifyStickersChange}) {
       requestStickers()
   }
 
-  const requestStickers = async (prompt) => {
-    console.log(prompt);
+  const requestStickers = async (query) => {
+    console.log(query);
     const response = await fetch('/chosenEmojis', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8',
       },
-      body: JSON.stringify({ prompt }),
+      body: JSON.stringify({ query }),
     });
 
     const data = await response.json();
     //setStickerList(data.emojis);
-    console.log(data);
+    setStickerList(data.result);
   }
 
   const stickerListDiv = (list) => {
@@ -51,7 +51,7 @@ function Stickers({notifyStickersChange}) {
           <InputStickers notifyStickersRequested = {(text) => requestStickers(text)}/>
         </div>
         <div className='inputCell_result'>
-          <StickerList/>
+          {stickerList && <StickerList stickers={stickerList}/>}
         </div>
       </div>
       </div>

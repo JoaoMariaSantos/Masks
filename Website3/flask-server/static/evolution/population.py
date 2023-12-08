@@ -14,7 +14,7 @@ class Population:
 
     individuals = []
 
-    def __init__(self, populationSize, eliteSize, mutationRate, crossoverRate, tournamentSize, facePath):
+    def __init__(self, populationSize, eliteSize, mutationRate, crossoverRate, tournamentSize, facePath, stickerDirPath):
         self.populationSize = populationSize
         self.eliteSize = eliteSize
         self.mutationRate = mutationRate
@@ -23,7 +23,7 @@ class Population:
         self.facePath = facePath
 
         for i in range(self.populationSize):
-            self.individuals.append(Individual(facePath))
+            self.individuals.append(Individual(facePath, stickerDirPath))
             self.individuals[i].id = i
             self.evaluate(self.individuals[i])
 

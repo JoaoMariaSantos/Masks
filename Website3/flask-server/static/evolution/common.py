@@ -5,10 +5,12 @@ from pathlib import Path
 
 faceFileName = ''
 
-def createCircle():
+def createSticker():
     return {'x' : random.uniform(0, 1), 
             'y' : random.uniform(0, 1), 
-            'radius' : random.uniform(0,.2) }
+            'radius' : random.uniform(0,.2),
+            'rotation' : random.uniform(0, 1),
+            'id' : random.uniform(0, 1)}
 
 def clamp(x, min, max):
     if x > max:
@@ -27,12 +29,7 @@ def getFacePath():
     p = str(Path(__file__).parents[1]) + "/uploads/" + faceFileName
     print(p)
     return p
-    print(directory)
 
-    imagePattern = os.path.join(directory, '*.{jpg,png}')
-    imageFiles = glob.glob(imagePattern)
-    print(imageFiles)
-
-    for filename in imageFiles:
-        print(filename)
-        return filename
+def getStickersDirPath():
+    p = str(Path(__file__).parents[1]) + "/emojis/png"
+    return p

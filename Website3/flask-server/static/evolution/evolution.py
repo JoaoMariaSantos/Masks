@@ -12,8 +12,13 @@ evolving = False
 def startEvolution(): #add emoji paths
     print('starting evolution')
     evolving = True
+
     facePath = getFacePath()
-    population = Population(populationSize, eliteSize, mutationRate, crossoverRate, tournamentSize, facePath) #add emoji path
+    stickerDirPath = getStickersDirPath()
+
+    print(facePath)
+
+    population = Population(populationSize, eliteSize, mutationRate, crossoverRate, tournamentSize, facePath, stickerDirPath) #add emoji path
     while evolving or population.nGenerations < 50:
         population.evolve()
         print('Gen: ' + str(population.nGenerations) + ' Fitness: ' + str(population.individuals[0].fitness))
