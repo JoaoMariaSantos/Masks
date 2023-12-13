@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react'
+import Banner from './Banner'
 import Header from './Header'
-import HelpButton from './HelpButton'
 import Photos from './Photos'
 import Stickers from './Stickers'
 import GenerateButton from './GenerateButton'
@@ -50,6 +50,7 @@ function InputPage() {
   return (
     <div id='inputPage' className='page'>
       <div>
+        <Banner/>
         <Header/>
         <CodeButton/>
         <Photos notifyPhotoChange = {handlePhotoChange}/>

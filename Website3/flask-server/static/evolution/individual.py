@@ -70,9 +70,12 @@ class Individual:
         for sticker in self.stickers:
 
             imgToOpen = str(math.floor(sticker['id'] * 4)) + '.png'
-            overlay = Image.open(self.stickerDirPath + '/' + imgToOpen)
-            images.append(overlay)
 
+            try:
+                overlay = Image.open(self.stickerDirPath + '/' + imgToOpen)
+                images.append(overlay)
+            except FileNotFoundError as e:
+                pass
 
         w, h = background.size
 
@@ -90,8 +93,11 @@ class Individual:
             images[index] = images[index].rotate(sticker['rotation'] * 360)
 
             result.paste(images[index], (x, y), images[index])
+                
             
             index += 1
+            if index >= len(images):
+                 index = len(images) - 1
 
         path = self.getImagePath()
 

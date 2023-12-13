@@ -1,6 +1,6 @@
 import requests
 from io import BytesIO
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 
 from faceDetection import *
 from static.evolution.evolution import *
@@ -58,6 +58,10 @@ def saveEmojisPNG(emojis, path, size):
 
         response = requests.get(url, stream=True)
 
-        img = Image.open(response.raw)
-        img.save(path + "/" + name)
+        try:
+            img = Image.open(response.raw)
+            img.save(path + "/" + name)
+        except UnidentifiedImageError as e:
+            print("error fetching from: " + url)
+
         index += 1

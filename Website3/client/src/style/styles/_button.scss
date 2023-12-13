@@ -6,8 +6,31 @@ button, a, label{
 
     cursor: pointer;
 
+
+}
+
+button, label{
+    background-color: black !important;
+    color: $color-yellow !important;
+
+        
     &:hover{
-        background-color: $color-yellow !important;
-        border-radius: 16px 16px 16px 0px !important;
+        background-color: white !important;
+    }
+
+        
+    h2{
+        color: $color-yellow !important;
     }
 }
+
+a{
+    &:hover{
+        background-color: black !important;
+
+        h2{
+            color: $color-yellow !important;
+        }
+    }
+}
+

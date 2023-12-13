@@ -4,13 +4,13 @@ $color-light_yellow: #F1DA8F;
 $color-grey: #6C746C;
 $color-white: #FCFCFB;
 
-$border: solid 1px $color-dark_brown;
+$border: solid 1px black;
 
 body, *, html{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: $color-dark_brown;
+    color: black;
 }
 
 html{
@@ -32,7 +32,7 @@ a{
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 
 body, p, input, textarea{
-    font-family: 'Director';
+    font-family: 'IBM Plex Mono', monospace;;
 }
 
 h1,h2,h3,h4,button, label{
@@ -49,6 +49,7 @@ h1,h2,h3,h4,button, label{
 
 @import 'styles/inputCell';
 
+@import 'styles/banner';
 @import 'styles/header';
 @import 'styles/helpButton';
 @import 'styles/codeButton';

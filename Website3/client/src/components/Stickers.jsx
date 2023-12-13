@@ -6,6 +6,7 @@ import ProxyContext from '../ProxyContext'
 function Stickers({notifyStickersChange}) {
   const proxyUrl = useContext(ProxyContext)
   const [stickerList, setStickerList] = useState(null)
+  const [requestFinished, setRequestFinished] = useState(true);
 
   const inputCellClasses = () => {
     let classes = "cell inputCell"
@@ -18,6 +19,7 @@ function Stickers({notifyStickersChange}) {
   }
 
   const requestStickers = async (query) => {
+    setRequestFinished(false)
     console.log(query);
     const response = await fetch(proxyUrl + '/chosenEmojis', {
       method: 'POST',
@@ -34,6 +36,7 @@ function Stickers({notifyStickersChange}) {
     const data = await response.json();
 
     setStickerList(data.result);
+    setRequestFinished(true);
     notifyStickersChange(true);
   }
 
@@ -54,7 +57,7 @@ function Stickers({notifyStickersChange}) {
           <p>They are only used to choose your stickers</p>
         </div>
         <div className='inputCell_input'>
-          <InputStickers notifyStickersRequested = {(text) => requestStickers(text)}/>
+          <InputStickers notifyStickersRequested = {(text) => requestStickers(text)} requestDone = {requestFinished}/>
         </div>
         <div className='inputCell_result'>
           {stickerList && <StickerList stickers={stickerList}/>}

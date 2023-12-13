@@ -1,0 +1,15 @@
+#banner{
+    position: relative;
+    grid-column: 1 / 9;
+    grid-row: 1 / 1;
+
+    background-color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p{
+        color: white;
+    }
+}
