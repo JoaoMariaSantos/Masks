@@ -9,8 +9,6 @@ from flask_cors import CORS
 import helpers
 import openai
 
-#https://conceptnet.io/c/en/rock para emojis
-
 app = Flask(__name__)
 CORS(app)
 

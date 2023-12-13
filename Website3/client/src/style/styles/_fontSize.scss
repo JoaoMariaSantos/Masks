@@ -1,4 +1,4 @@
-@media screen and (min-width: 1001px) {
+@media screen and (min-width: 1200px) {
     h1{
         font-size: 2.4em;
     }
@@ -9,6 +9,21 @@
     
     p, label, textarea {
         font-size: 1em;
+    }
+}
+
+
+@media screen and (min-width: 1001px) {
+    h1{
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+    
+    p, label, textarea {
+        font-size: 0.9em;
     }
 }
 

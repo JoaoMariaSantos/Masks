@@ -20,7 +20,7 @@ def evaluate(individual, facePath):
     #print('c: ' + str(confidence))
     #print('d: ' + str(distance)) 
 
-    fitness = 1 - ((1-distance) * .7) - (area * .3)
+    #fitness = 1 - ((1-distance) * .7) - (area * .3)
+    fitness = 1 - distance
 
-    individual.exportInfo(fitness, distance, area)
-    individual.setFitness(fitness)
+    individual.setInfo(fitness, distance, area)

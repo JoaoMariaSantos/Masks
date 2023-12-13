@@ -14,6 +14,12 @@ class Individual:
     fitness = 0
     id = 0
     totalArea = 0
+    maxStickers = 5
+    info = {
+        "fitness" : 0, 
+        "distance" : 0,
+        "area" : 0
+    }
 
     def __init__(self, referencePath, stickerDirPath):
         self.stickers.append(createSticker())
@@ -25,13 +31,15 @@ class Individual:
         self.referencePath = referencePath
         self.stickerDirPath = stickerDirPath
 
-    def setFitness(self, fitness):
-        self.fitness = fitness
+    def setInfo(self, fitness, distance, area):
+        self.info["fitness"] = fitness;
+        self.info["distance"] = distance;
+        self.info["area"] = area;
 
-    def exportInfo(self, fitness, distance, area):
-        lines = ['fitness: ' + str(fitness), 
-                 'distance: ' + str(distance),
-                 'area: ' + str(area)]
+    def exportInfo(self):
+        lines = ['fitness: ' + str(self.info["fitness"]), 
+                 'distance: ' + str(self.info["distance"]),
+                 'area: ' + str(self.info["area"])]
         with open(self.getTextPath(), 'w') as f:
             f.write('\n'.join(lines))
 
@@ -40,7 +48,7 @@ class Individual:
         if random.uniform(0,1) < (mutationRate/2):
             if len(self.stickers) > 3 and random.uniform(0,1) < .5:
                 self.stickers.pop(random.randrange(len(self.stickers))) 
-            elif len(self.stickers) < 5:
+            elif len(self.stickers) < self.maxStickers:
                 self.stickers.append(createSticker())
 
         for c in self.stickers:
@@ -111,34 +119,7 @@ class Individual:
             result = result.convert("RGB")  # Convert to RGB before saving as JPEG
             result.save(path)
 
-
-        """ with Image.open(self.referencePath) as im:
-            w, h = im.size
-
-            for sticker in self.stickers:
-                
-                x = math.floor(sticker['x'] * w)
-                y = math.floor(sticker['y'] * h)
-                radius = math.floor(sticker['radius'] * w * .2)
-                
-                topLeft = (x - radius, y - radius)
-                bottomRight = (x + radius, y + radius)
-
-
-                
-            
-            path = self.getImagePath()
-
-            pathToCheck = path.rsplit('/', 1)[0]
-            if not os.path.exists(pathToCheck):
-                os.makedirs(pathToCheck)
-
-            # Check the file extension and save accordingly
-            _, file_extension = os.path.splitext(path)
-            if file_extension.lower() == '.jpg' or file_extension.lower() == '.jpeg':
-                im = im.convert("RGB")  # Convert to RGB before saving as JPEG
-            im.save(path) """
-
+    #TODO: fix calculatearea
     def calculateArea(self):
         """im = Image.open(self.getImagePath())
         w, h = im.size
@@ -168,3 +149,6 @@ class Individual:
         copiedIndividual = Individual( self.referencePath, self.stickerDirPath)
         copiedIndividual.fromCopy(self.stickers.copy(), self.referencePath, self.stickerDirPath)
         return copiedIndividual
+    
+    def getFitness(self):
+        return self.info["fitness"]

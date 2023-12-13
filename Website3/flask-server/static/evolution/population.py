@@ -60,6 +60,11 @@ class Population:
             self.individuals[i] = newIndividuals[i]
 
         self.sortByFitness()
+
+        for i in range(self.populationSize):
+            self.individuals[i].id = i
+            self.individuals[i].exportInfo
+
         self.nGenerations += 1
 
     def tournamentSelection(self):
@@ -79,7 +84,7 @@ class Population:
         return fittest
 
     def sortByFitness(self):
-        self.individuals.sort(key = lambda x: x.fitness, reverse = True)
+        self.individuals.sort(key = lambda x: x.getFitness(), reverse = True)
 
     def evaluate(self, individual):
         individual.exportImage()
