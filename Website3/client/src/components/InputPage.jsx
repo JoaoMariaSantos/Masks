@@ -1,12 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import Header from './Header'
 import HelpButton from './HelpButton'
 import Photos from './Photos'
 import Stickers from './Stickers'
 import GenerateButton from './GenerateButton'
 import CodeButton from './CodeButton'
+import ProxyContext from '../ProxyContext'
 
 function InputPage() {
+  const proxyUrl = useContext(ProxyContext)
 
   const [photoReady, setPhotoReady] = useState(false);
   const [stickersReady, setStickersReady] = useState(false);
@@ -23,14 +25,14 @@ function InputPage() {
 
   const handleGeneratePressed = () =>{
     console.log("generate button was pressed \nPhoto: " + photoReady + "\nStickers: " + stickersReady);
-    if(photoReady){ //&& stickersReady
+    if(photoReady && stickersReady){
       console.log("generation ready");
       startGeneration();
     }
   }
 
   const startGeneration = () => {
-    fetch("/startgeneration", {
+    fetch(proxyUrl + "/startgeneration", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +54,7 @@ function InputPage() {
         <CodeButton/>
         <Photos notifyPhotoChange = {handlePhotoChange}/>
         <Stickers notifyStickersChange = {handleStickersChange}/>
-        {photoReady && <GenerateButton notifyGeneratePressed = {handleGeneratePressed}/>}
+        {photoReady && stickersReady && <GenerateButton notifyGeneratePressed = {handleGeneratePressed}/>}
       </div>
     </div>
   )

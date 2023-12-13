@@ -1,25 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import InputImage from "./InputImage";
+import ProxyContext from "../ProxyContext";
 
-function Photos({notifyPhotoChange}) {
+function Photos({ notifyPhotoChange }) {
+  const proxyUrl = useContext(ProxyContext);
+
   const [uploadedFaceSrc, setUploadedFaceSrc] = useState(null);
   const [errorFace, setErrorFace] = useState("");
   const [loadFace, setLoadFace] = useState(false);
 
   const inputCellClasses = () => {
-    let classes = "cell inputCell"
-    if(uploadedFaceSrc) classes += " inputCell_ready"
-    return classes
-  }
+    let classes = "cell inputCell";
+    if (uploadedFaceSrc) classes += " inputCell_ready";
+    return classes;
+  };
 
   //gets the face photo URL after being notified of upload
   useEffect(() => {
-    if(loadFace){
-      fetch("/uploadedface")
+    if (loadFace) {
+      fetch(proxyUrl + "/uploadedface")
         .then((res) => res.blob())
         .then((blob) => {
-          console.log(blob)
-          if(blob['type'].includes('image')){
+          console.log(blob);
+          if (blob["type"].includes("image")) {
             const faceUrl = URL.createObjectURL(blob);
             setUploadedFaceSrc(faceUrl);
             console.log(faceUrl);
@@ -34,7 +37,7 @@ function Photos({notifyPhotoChange}) {
   }, [loadFace]);
 
   //to be notified by child InputImage when photo is uploaded
-  const handleUploadNotification = (error) =>{
+  const handleUploadNotification = (error) => {
     console.log(error);
     setErrorFace(error);
 
@@ -42,12 +45,11 @@ function Photos({notifyPhotoChange}) {
 
     setLoadFace(goodPhoto);
     notifyPhotoChange(goodPhoto);
-    if(!goodPhoto) setUploadedFaceSrc(null);
-  }
-
+    if (!goodPhoto) setUploadedFaceSrc(null);
+  };
 
   return (
-    <div id="photos" >
+    <div id="photos">
       <div className={inputCellClasses()}>
         <div className="inputCell_heading">
           <h2>Photo</h2>
@@ -59,17 +61,15 @@ function Photos({notifyPhotoChange}) {
           <p>It is only used for the generation</p>
         </div>
         <div className="inputCell_input">
-
-          <InputImage notifyUpload={handleUploadNotification}/>
-          
+          <InputImage notifyUpload={handleUploadNotification} />
         </div>
         <div className="inputCell_result">
-
           <div id="uploadedPhotos">
-            {uploadedFaceSrc && <img src={uploadedFaceSrc} alt="uploaded photo"/>}
+            {uploadedFaceSrc && (
+              <img src={uploadedFaceSrc} alt="uploaded photo" />
+            )}
             {errorFace !== "" && <span>{errorFace}</span>}
           </div>
-
         </div>
       </div>
     </div>

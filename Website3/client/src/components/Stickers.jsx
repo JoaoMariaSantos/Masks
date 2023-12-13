@@ -1,9 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import InputStickers from './InputStickers'
 import StickerList from './StickerList'
+import ProxyContext from '../ProxyContext'
 
 function Stickers({notifyStickersChange}) {
-
+  const proxyUrl = useContext(ProxyContext)
   const [stickerList, setStickerList] = useState(null)
 
   const inputCellClasses = () => {
@@ -18,7 +19,7 @@ function Stickers({notifyStickersChange}) {
 
   const requestStickers = async (query) => {
     console.log(query);
-    const response = await fetch('/chosenEmojis', {
+    const response = await fetch(proxyUrl + '/chosenEmojis', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
@@ -26,9 +27,14 @@ function Stickers({notifyStickersChange}) {
       body: JSON.stringify({ query }),
     });
 
+    if (!response) {
+      throw new Error('Error fetching emojis')
+    }
+
     const data = await response.json();
-    //setStickerList(data.emojis);
+
     setStickerList(data.result);
+    notifyStickersChange(true);
   }
 
   const stickerListDiv = (list) => {

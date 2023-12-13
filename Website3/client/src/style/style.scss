@@ -26,16 +26,17 @@ a{
     text-decoration: none
 }
 
+//ICONS
+
 @import 'fonts';
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 
 body, p, input, textarea{
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 400;
+    font-family: 'Director';
 }
 
-h1,h2,h3,h4{
-    font-family: 'Paytone One', sans-serif;
+h1,h2,h3,h4,button, label{
+    font-family: 'Archivo Black', sans-serif;
 }
 
 @import 'styles/fontSize';

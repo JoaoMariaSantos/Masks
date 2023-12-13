@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import ProxyContext from '../ProxyContext';
 
 function InputImage({notifyUpload}) {
-   
+  const proxyUrl = useContext(ProxyContext)
+
   const handleUpload = async (e) => {
     const file = e.target.files[0];
 
@@ -9,7 +11,7 @@ function InputImage({notifyUpload}) {
       const formData = new FormData();
       formData.append('face', file);
   
-      fetch('/uploadface',
+      fetch(proxyUrl + '/uploadface',
         {
           method: 'post',
           body: formData,

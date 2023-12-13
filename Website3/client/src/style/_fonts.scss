@@ -34,6 +34,41 @@
     font-weight: normal;
 }
 
+//FONT DIRECTOR @ https://velvetyne.fr/fonts/degheest/
+
+@font-face {
+    font-family: 'Director';
+    src: 
+        local('Director')
+        url('../resources/typography/director/Director-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../resources/typography/director/Director-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+        url('../resources/typography/director/Director-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Director';
+    src: 
+        local('Director')
+        url('../resources/typography/director/Director-Light.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../resources/typography/director/Director-Light.woff') format('woff'), /* Pretty Modern Browsers */
+        url('../resources/typography/director/Director-Light.ttf')  format('truetype'); /* Safari, Android, iOS */
+
+    font-weight: light;
+}
+
+@font-face {
+    font-family: 'Director';
+    src: 
+        local('Director')
+        url('../resources/typography/director/Director-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+        url('../resources/typography/director/Director-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+        url('../resources/typography/director/Director-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+
+    font-weight: bold;
+}
+
 //FONT SPACE GROTESK
 
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
@@ -41,4 +76,12 @@
 //FONT PAYTONE ONE
 
 @import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap");
+
+//FONT ANTON
+
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+//FONT ARCHIVO BLACK
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
 

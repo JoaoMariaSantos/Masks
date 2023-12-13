@@ -10,9 +10,9 @@ function StickerList({stickers}) {
 
   return (
     <div id='sticker_list'>
-        {stickers.map((sticker) => {
+        {stickers.map((sticker, index) => {
           return(
-            <div>
+            <div key={index}>
               <img src={sticker.svg} alt={sticker.message} />
             </div>
           );

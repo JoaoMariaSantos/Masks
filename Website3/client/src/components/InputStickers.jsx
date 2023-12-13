@@ -5,7 +5,7 @@ function InputStickers({notifyStickersRequested}) {
   const [prompt, setPrompt] = useState('');
 
   const requestStickers = () => {
-    if(prompt.length < 2) return;
+    if(prompt.length == 0) return;
     else notifyStickersRequested(prompt);
   }
 

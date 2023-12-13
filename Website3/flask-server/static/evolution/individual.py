@@ -38,9 +38,9 @@ class Individual:
     def mutate(self, mutationRate):
 
         if random.uniform(0,1) < (mutationRate/2):
-            if len(self.stickers) > 1 and random.uniform(0,1) < .5:
+            if len(self.stickers) > 3 and random.uniform(0,1) < .5:
                 self.stickers.pop(random.randrange(len(self.stickers))) 
-            else:
+            elif len(self.stickers) < 5:
                 self.stickers.append(createSticker())
 
         for c in self.stickers:

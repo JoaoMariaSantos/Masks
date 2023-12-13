@@ -2,7 +2,7 @@
     display: block;
     width: 100vw;
     height: 100vh;
-    padding: 16px;
+    //padding: 16px;
 
     >div{
         display: grid;
@@ -10,7 +10,7 @@
         height: 100%;
         grid-template-columns: repeat(8, 1fr); //8
         grid-template-rows: 1fr 5fr 5fr 5fr; //5
-        grid-column-gap: 1vw;
-        grid-row-gap: 1vw;
+        //grid-column-gap: 1vw;
+        //grid-row-gap: 1vw;
     }
 }
