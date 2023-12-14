@@ -55,11 +55,11 @@ function Photos({ notifyPhotoChange }) {
           <h2>Photo</h2>
         </div>
         <div className="inputCell_description">
-          <p>Upload a photo of yourself facing foward</p>
+          <p>Upload a photo of yourself facing foward so that it won't be recognized</p>
         </div>
-        <div className="inputCell_assurance">
+         {/*<div className="inputCell_assurance">
           <p>It is only used for the generation</p>
-        </div>
+        </div>*/}
         <div className="inputCell_input">
           <InputImage notifyUpload={handleUploadNotification} />
         </div>

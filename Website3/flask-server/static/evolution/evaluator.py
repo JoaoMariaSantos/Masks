@@ -14,13 +14,13 @@ def evaluate(individual, facePath):
     distance = float(result['distance']) #float distance between images from 0 to 1
     #confidence = result['distance'] #distance between faces
 
-    area = individual.totalArea
+    area = individual.info['area']
 
     #print()
     #print('c: ' + str(confidence))
     #print('d: ' + str(distance)) 
 
     #fitness = 1 - ((1-distance) * .7) - (area * .3)
-    fitness = 1 - distance
+    fitness = 1 - (1-distance)
 
     individual.setInfo(fitness, distance, area)

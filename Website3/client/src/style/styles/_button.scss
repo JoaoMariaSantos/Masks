@@ -28,7 +28,7 @@ a{
     &:hover{
         background-color: black !important;
 
-        h2{
+        h2, span{
             color: $color-yellow !important;
         }
     }

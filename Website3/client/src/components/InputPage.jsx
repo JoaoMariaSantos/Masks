@@ -7,7 +7,7 @@ import GenerateButton from './GenerateButton'
 import CodeButton from './CodeButton'
 import ProxyContext from '../ProxyContext'
 
-function InputPage() {
+function InputPage({startedGeneration}) {
   const proxyUrl = useContext(ProxyContext)
 
   const [photoReady, setPhotoReady] = useState(false);
@@ -27,11 +27,13 @@ function InputPage() {
     console.log("generate button was pressed \nPhoto: " + photoReady + "\nStickers: " + stickersReady);
     if(photoReady && stickersReady){
       console.log("generation ready");
+      startedGeneration();
       startGeneration();
     }
   }
 
   const startGeneration = () => {
+
     fetch(proxyUrl + "/startgeneration", {
       method: 'POST',
       headers: {

@@ -13,7 +13,6 @@ class Individual:
     stickers = []
     fitness = 0
     id = 0
-    totalArea = 0
     maxStickers = 5
     info = {
         "fitness" : 0, 
@@ -32,9 +31,9 @@ class Individual:
         self.stickerDirPath = stickerDirPath
 
     def setInfo(self, fitness, distance, area):
-        self.info["fitness"] = fitness;
-        self.info["distance"] = distance;
-        self.info["area"] = area;
+        self.info["fitness"] = fitness
+        self.info["distance"] = distance
+        self.info["area"] = area
 
     def exportInfo(self):
         lines = ['fitness: ' + str(self.info["fitness"]), 
@@ -64,6 +63,8 @@ class Individual:
         child.stickers = []
 
         for i in range(len(self.stickers)):
+            if len(child.stickers) >= self.maxStickers:
+                break
             if random.uniform(0,1) < 0.5:
                 child.stickers.append(self.stickers[i])
             elif i < len(individual.stickers):
@@ -135,9 +136,9 @@ class Individual:
         area = 0
         
         for sticker in self.stickers:
-            area += sticker['radius'] * sticker['radius']
+            area = area + (sticker['radius'] * sticker['radius'])
 
-        self.totalArea = area
+        self.info['area'] = area
 
     def getImagePath(self):
         return self.exportPath + str(self.id) + '/img' + '.jpeg'

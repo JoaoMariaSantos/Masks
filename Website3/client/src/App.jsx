@@ -10,11 +10,23 @@ function App() {
   const proxyUrl = "http://localhost:5000";
   const [isGenerating, setIsGenerating] = useState(false)
 
+  const startedGeneration = () => {
+    setIsGenerating(true)
+  }
+
+  const stoppedGeneration = () => {
+    setIsGenerating(false)
+  }
+
+  const generationChange = (state) => {
+    setIsGenerating(state)
+  }
+
   return (
     <div>
       <ProxyContext.Provider value = {proxyUrl}>
-        {isGenerating ? <EvolutionPage/> : <InputPage/>}
-        </ProxyContext.Provider>
+        {isGenerating ? <EvolutionPage stoppedGeneration={stoppedGeneration}/> : <InputPage startedGeneration={startedGeneration}/>}
+      </ProxyContext.Provider>
     </div>
   )
 }
