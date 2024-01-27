@@ -10,4 +10,4 @@ site mais experiência
 landing page
 pagina help em vez de ir para repositório
 mostrar progresso da evolução
-menos importancia disclaimers
+menos importância disclaimers

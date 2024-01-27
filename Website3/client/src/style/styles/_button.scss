@@ -5,11 +5,9 @@ button, a, label{
     text-align: center;
 
     cursor: pointer;
-
-
 }
 
-button, label{
+/*button, label, a{
     background-color: black !important;
     color: $color-yellow !important;
 
@@ -19,18 +17,21 @@ button, label{
     }
 
         
-    h2{
+    h1,h2, span{
         color: $color-yellow !important;
     }
-}
+}*/
 
-a{
+button, label,a{
+    
     &:hover{
         background-color: black !important;
-
-        h2, span{
-            color: $color-yellow !important;
+        color: $color-yellow !important;
+        
+        *{
+        color: $color-yellow !important;
         }
+        
     }
 }
 

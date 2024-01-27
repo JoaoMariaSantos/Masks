@@ -24,11 +24,14 @@ class Individual:
         self.stickers.append(createSticker())
         self.referencePath = referencePath
         self.stickerDirPath = stickerDirPath
+        self.limitStickers()
 
-    def fromCopy(self, stickers, referencePath, stickerDirPath):
+    def fromCopy(self, stickers, referencePath, stickerDirPath, info):
         self.stickers = stickers
         self.referencePath = referencePath
         self.stickerDirPath = stickerDirPath
+        self.info = info
+        self.limitStickers()
 
     def setInfo(self, fitness, distance, area):
         self.info["fitness"] = fitness
@@ -41,6 +44,9 @@ class Individual:
                  'area: ' + str(self.info["area"])]
         with open(self.getTextPath(), 'w') as f:
             f.write('\n'.join(lines))
+        
+    def limitStickers(self):
+        self.stickers = self.stickers[:self.maxStickers]
 
     def mutate(self, mutationRate):
 
@@ -70,6 +76,7 @@ class Individual:
             elif i < len(individual.stickers):
                 child.stickers.append(individual.stickers[i])
 
+        child.limitStickers()
         return child
 
     def exportImage(self):
@@ -92,6 +99,9 @@ class Individual:
         result.paste(background, (0,0))
 
         index = 0
+
+        self.limitStickers()
+
         for sticker in self.stickers:
             x = math.floor(sticker['x'] * w)
             y = math.floor(sticker['y'] * h)
@@ -101,8 +111,7 @@ class Individual:
             images[index] = images[index].resize((radius, radius))
             images[index] = images[index].rotate(sticker['rotation'] * 360)
 
-            result.paste(images[index], (x, y), images[index])
-                
+            result.paste(images[index], (x, y), images[index])    
             
             index += 1
             if index >= len(images):
@@ -121,18 +130,7 @@ class Individual:
             result.save(path)
 
     #TODO: fix calculatearea
-    def calculateArea(self):
-        """im = Image.open(self.getImagePath())
-        w, h = im.size
-        maxArea = w * h
-        area = 0
-
-        for x in range(w):
-            for y in range(h):
-                c = im.getpixel((x,y))
-                if c == self.color:
-                    area += 1"""
-        
+    def calculateArea(self):        
         area = 0
         
         for sticker in self.stickers:
@@ -147,9 +145,9 @@ class Individual:
         return self.exportPath + str(self.id) + '/info' + '.txt'
 
     def getCopy(self):
-        copiedIndividual = Individual( self.referencePath, self.stickerDirPath)
-        copiedIndividual.fromCopy(self.stickers.copy(), self.referencePath, self.stickerDirPath)
+        copiedIndividual = Individual(self.referencePath, self.stickerDirPath)
+        copiedIndividual.fromCopy(self.stickers.copy(), self.referencePath, self.stickerDirPath, self.info.copy())
         return copiedIndividual
     
     def getFitness(self):
-        return self.info["fitness"]
+        return float(self.info["fitness"])

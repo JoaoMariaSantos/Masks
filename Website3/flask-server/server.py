@@ -6,11 +6,13 @@ import jsonlines
 import numpy as np
 from flask import Flask, request, send_file, jsonify
 from flask_cors import CORS
+from flask_socketio import SocketIO, send, emit
 import helpers
 import openai
 
 app = Flask(__name__)
 CORS(app)
+socketio = SocketIO(app, threaded=True, cors_allowed_origins="*")
 
 openai.api_key = helpers.getOpenAIKey()
 openai.api_base = "https://api.openai.com/v1"
@@ -43,7 +45,7 @@ def getUploadedFace():
 
 @app.route("/uploadface", methods=['POST'])
 def uploadPhoto():
-    clearUploads()
+    clearDirectory(UPLOAD_FOLDER)
 
     #upload image to uploads folder
     if 'face' not in request.files:
@@ -142,9 +144,32 @@ def startGeneration():
     helpers.startEvolution()
     return  {"msg": ["nice"]}
 
+@socketio.on('message_from_server')
+def handle_message(message):
+    print('Received message:', message)
+    # Process message as needed
+    socketio.emit('message_to_client', 'Hello from Flask!')
+
+def notifyNewGeneration(distance):
+    print("new generation socket notification")
+    socketio.emit('new_generation', distance)
+
+@app.route("/bestIndividual")
+def getBestIndividual():
+
+    for file_name in os.listdir(UPLOAD_FOLDER):
+        file_path = os.path.join(UPLOAD_FOLDER, file_name)
+        try:
+            if os.path.isfile(file_path):
+                return send_file(file_path)
+        except Exception as e:
+            return {"msg": ["no image"]}
+    return {"msg": ["no image"]}
+
 def onStartup():
     clearDirectory(UPLOAD_FOLDER)
     clearDirectory(EMOJI_SVG_DIR)
+    clearDirectory(EMOJI_PNG_DIR)
 
 def clearUploads():
     #delete images in uploads folder
@@ -157,6 +182,7 @@ def clearUploads():
             print(f"Error: {e}")
 
 def clearDirectory(path):
+    print("clearing: " + str(path))
     for file_name in os.listdir(path):
         file_path = os.path.join(path, file_name)
         try:
@@ -166,8 +192,9 @@ def clearDirectory(path):
             print(f"Error: {e}")
 
 ### Runs on startup
-with app.app_context():
-    onStartup()
+#with app.app_context():
+    #onStartup()
 
 if __name__ == "__main__":
-    app.run(debug = True, threaded=True)
+    socketio.run(app, debug=True)
+    #app.run(debug = True, threaded=True)

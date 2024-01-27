@@ -5,6 +5,7 @@ import Photos from './Photos'
 import Stickers from './Stickers'
 import GenerateButton from './GenerateButton'
 import CodeButton from './CodeButton'
+import HelpButton from './HelpButton'
 import ProxyContext from '../ProxyContext'
 
 function InputPage({startedGeneration}) {
@@ -53,8 +54,8 @@ function InputPage({startedGeneration}) {
     <div id='inputPage' className='page'>
       <div>
         <Banner/>
-        <Header/>
-        <CodeButton/>
+        {/*<Header/>
+        <HelpButton/>*/}
         <Photos notifyPhotoChange = {handlePhotoChange}/>
         <Stickers notifyStickersChange = {handleStickersChange}/>
         {photoReady && stickersReady && <GenerateButton notifyGeneratePressed = {handleGeneratePressed}/>}

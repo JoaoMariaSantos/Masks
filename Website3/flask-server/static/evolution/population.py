@@ -27,43 +27,53 @@ class Population:
             self.individuals[i].id = i
             self.evaluate(self.individuals[i])
 
+        self.sortByFitness()
+
 
     def evolve(self):
         newIndividuals = []
 
         #elitism
         for i in range(self.eliteSize):
+            print("is elite: " + str(i))
             newIndividuals.append(self.individuals[i])
-            newIndividuals[i].id = i
+
+        print("After elitism newIndividuals length is: " + str(len(newIndividuals)))
 
         #tournament or copy
         for i in range(self.eliteSize, self.populationSize):
             if random.uniform(0,1) <= self.crossoverRate:
-                parent1 = self.tournamentSelection()
-                parent2 = self.tournamentSelection()
+                parent1 = self.tournamentSelection().getCopy()
+                parent2 = self.tournamentSelection().getCopy()
                 child = parent1.crossover(parent2)
                 newIndividuals.append(child)
             else:
-                newIndividuals.append(self.individuals[i].getCopy())
+                newIndividuals.append(self.tournamentSelection().getCopy())
 
         #mutate
         for i in range(self.eliteSize, self.populationSize):
             newIndividuals[i].mutate(self.mutationRate)
-            newIndividuals[i].id = i
 
-        #evaluate
-        for i in newIndividuals:
-            self.evaluate(i)
-        
+        self.individuals.clear()
+
         #apply new individuals
         for i in range(self.populationSize):
-            self.individuals[i] = newIndividuals[i]
+            self.individuals.append(newIndividuals[i])
+            self.individuals[i].id = i
+
+        #evaluate
+        for i in range(self.populationSize):
+            self.evaluate(self.individuals[i])
 
         self.sortByFitness()
 
+        #for i in range(len(self.individuals)):
+            #print(self.individuals[i].getFitness())
+
         for i in range(self.populationSize):
             self.individuals[i].id = i
-            self.individuals[i].exportInfo
+            self.individuals[i].exportImage()
+            self.individuals[i].exportInfo()
 
         self.nGenerations += 1
 
@@ -90,3 +100,14 @@ class Population:
         individual.exportImage()
         individual.calculateArea()
         evaluate(individual, self.facePath)
+
+    def getBestFitness(self):
+        highestFitness = 0
+        highestFitnessIndex = 0
+
+        for i in range(len(self.individuals)):
+            if self.individuals[i].getFitness() > highestFitness:
+                highestFitness = self.individuals[i].getFitness()
+                highestFitnessIndex = i
+
+        return {highestFitness, highestFitnessIndex}

@@ -33,10 +33,10 @@ a{
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 
 body, p, input, textarea{
-    font-family: 'IBM Plex Mono', monospace;;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
-h1,h2,h3,h4,button, label{
+h1,h2,h3,h4,button, label, a{
     font-family: 'Archivo Black', sans-serif;
 }
 
@@ -49,6 +49,8 @@ h1,h2,h3,h4,button, label{
 @import 'styles/cell';
 
 @import 'styles/inputCell';
+
+@import 'styles/introduction';
 
 @import 'styles/banner';
 @import 'styles/header';

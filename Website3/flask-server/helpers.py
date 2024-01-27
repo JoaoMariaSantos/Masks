@@ -1,9 +1,10 @@
 import requests
 from io import BytesIO
 from PIL import Image, UnidentifiedImageError
+from static.evolution.common import *
+from static.evolution.evolution import *
 
 from faceDetection import *
-from static.evolution.evolution import *
 
 #gets chatgpt key from text file
 def getOpenAIKey():

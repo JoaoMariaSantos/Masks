@@ -1,8 +1,5 @@
 import math
 from deepface import DeepFace
-from PIL import Image, ImageDraw
-
-referencePaths = ['images/bradpitt_02.jpg', 'images/bradpitt_03.jpg', 'images/bradpitt_04.jpg']
 
 def evaluate(individual, facePath):
 
@@ -14,13 +11,13 @@ def evaluate(individual, facePath):
     distance = float(result['distance']) #float distance between images from 0 to 1
     #confidence = result['distance'] #distance between faces
 
-    area = individual.info['area']
+    area = float(individual.info['area'])
 
     #print()
     #print('c: ' + str(confidence))
     #print('d: ' + str(distance)) 
 
     #fitness = 1 - ((1-distance) * .7) - (area * .3)
-    fitness = 1 - (1-distance)
+    fitness = distance
 
     individual.setInfo(fitness, distance, area)
