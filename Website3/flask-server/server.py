@@ -19,6 +19,7 @@ openai.api_base = "https://api.openai.com/v1"
 EMBEDDING_MODEL = "text-embedding-ada-002"
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'uploads')
+BEST_INDIVIDUAL_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'evolution','individuals', '0')
 #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 EMOJI_SVG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'emojis', 'svg')
 EMOJI_PNG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'emojis', 'png')
@@ -157,8 +158,16 @@ def notifyNewGeneration(distance):
 @app.route("/bestIndividual")
 def getBestIndividual():
 
-    for file_name in os.listdir(UPLOAD_FOLDER):
-        file_path = os.path.join(UPLOAD_FOLDER, file_name)
+    print("getting best individual")
+
+    #if helpers.evolving == False:
+    #    return {"msg": ["not evolving"]}
+
+    for file_name in os.listdir(BEST_INDIVIDUAL_FOLDER):
+        print(file_name)
+        if 'jpeg' not in file_name:
+            continue
+        file_path = os.path.join(BEST_INDIVIDUAL_FOLDER, file_name)
         try:
             if os.path.isfile(file_path):
                 return send_file(file_path)
