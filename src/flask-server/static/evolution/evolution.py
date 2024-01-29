@@ -13,7 +13,6 @@ evolving = False
 
 def startEvolution(): #add emoji paths
     print('starting evolution')
-    from server import notifyNewGeneration
     global evolving
     evolving = True
 

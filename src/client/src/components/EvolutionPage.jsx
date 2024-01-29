@@ -62,7 +62,7 @@ function EvolutionPage() {
       <div>
         <Banner/>
         <EvolutionCell bestFitness={bestFitness}/>
-        <IndividualCell individualSrc={individualSrc}/>
+        <IndividualCell individualSrc={individualSrc} bestFitness={bestFitness}/>
       </div>
     </div>
   )

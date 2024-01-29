@@ -1,5 +1,4 @@
 import React from 'react'
-import Banner from './Banner';
 import HelpButton from './HelpButton';
 
 function Header() {

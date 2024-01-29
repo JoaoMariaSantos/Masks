@@ -18,6 +18,7 @@ EMBEDDING_MODEL = "text-embedding-ada-002"
 
 UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'uploads')
 BEST_INDIVIDUAL_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'evolution','individuals', '0')
+PDF_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'pdf')
 #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 EMOJI_SVG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'emojis', 'svg')
 EMOJI_PNG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static', 'emojis', 'png')
@@ -59,7 +60,13 @@ def uploadPhoto():
             
         fileType = file.filename.rsplit('.', 1)[-1]
 
+        print(file.filename)
+
+        print("file type is:" + fileType)
+
         newFileName = "face." + fileType
+
+        print(newFileName)
 
         helpers.setFaceFilename(newFileName)
         filename = os.path.join(UPLOAD_FOLDER, newFileName)
@@ -183,6 +190,13 @@ def getBestFitness():
         file_content = file.read()
 
     return {"value" : [file_content]}
+
+@app.route("/downloadStickers")
+def downloadStickers():
+    helpers.createExportPdf()
+    pdfPath = PDF_FOLDER + "/exportPDF.pdf"
+    return send_file(pdfPath, as_attachment=True)
+
 
 def onStartup():
     clearDirectory(UPLOAD_FOLDER)
