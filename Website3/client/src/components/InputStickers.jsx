@@ -6,7 +6,6 @@ function InputStickers({notifyStickersRequested, requestDone}) {
 
   useEffect(() => {
     setLoading(!requestDone)
-    console.log("loading done")
   }, [requestDone]);
 
   const requestStickers = () => {

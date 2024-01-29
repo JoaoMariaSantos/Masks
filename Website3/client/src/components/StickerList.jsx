@@ -6,8 +6,6 @@ function StickerList({stickers}) {
     <div><img src={sticker.svg} alt={sticker.message} /></div>
   }) 
 
-  
-
   return (
     <div id='sticker_list'>
         {stickers.map((sticker, index) => {

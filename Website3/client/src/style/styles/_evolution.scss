@@ -1,0 +1,60 @@
+#evolutionPage{
+
+    #evolutionCell{
+        grid-column: 1 / 5;
+        grid-row: 2 / 6;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: space-around;
+        //align-items: center;
+
+        h2{
+            text-align: center;
+        }
+
+        span{
+            text-align: left;
+        }
+
+    }
+
+    #individualCell{
+        grid-column: 5 / 9;
+        grid-row: 2 / 6;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #evolutionBar{
+
+        padding-left: 10%;
+        padding-right: 10%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        .circle{
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+        }
+
+        .false{
+            background-color: black;
+        }
+
+        .true{
+            background-color: $color-yellow;
+            width: 20px;
+            height: 20px;
+        }
+
+    }
+
+}

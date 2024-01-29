@@ -6,8 +6,8 @@ from PIL import Image, ImageDraw
 from copy import deepcopy
 
 class Individual:
-    exportPath = 'evolution/individuals/'
-    referencePath = 'evolution/reference/bradpittCropped.jpg'
+    exportPath = './evolution/individuals/'
+    referencePath = './evolution/reference/bradpittCropped.jpg'
     color = (0, 255, 0)
     circles = []
     fitness = 0

@@ -13,6 +13,7 @@ import openai
 app = Flask(__name__)
 CORS(app)
 socketio = SocketIO(app, threaded=True, cors_allowed_origins="*")
+CORS(app)
 
 openai.api_key = helpers.getOpenAIKey()
 openai.api_base = "https://api.openai.com/v1"
@@ -58,8 +59,13 @@ def uploadPhoto():
         return {"error": ["no name"]}
     
     if file:
-        helpers.setFaceFilename(file.filename)
-        filename = os.path.join(UPLOAD_FOLDER, file.filename)
+            
+        fileType = file.filename.rsplit('.', 1)[-1]
+
+        newFileName = "face." + fileType
+
+        helpers.setFaceFilename(newFileName)
+        filename = os.path.join(UPLOAD_FOLDER, newFileName)
         file.save(filename)
         detection = helpers.detectFace(filename)
         if detection['nFaces'] < 1:
@@ -145,15 +151,25 @@ def startGeneration():
     helpers.startEvolution()
     return  {"msg": ["nice"]}
 
+@app.route("/stopgeneration", methods=['POST'])
+def stopGeneration():
+    print("starting generation")
+    helpers.stopEvolution()
+    return  {"msg": ["nice"]}
+
 @socketio.on('message_from_server')
 def handle_message(message):
     print('Received message:', message)
     # Process message as needed
     socketio.emit('message_to_client', 'Hello from Flask!')
 
+@socketio.on('connect')
+def handle_socket_connect():
+    socketio.emit('message_to_client', 'CONNECTED Flask to React')
+
 def notifyNewGeneration(distance):
-    print("new generation socket notification")
-    socketio.emit('new_generation', distance)
+    print('sending new generation message')
+    socketio.emit('message_to_client', 'new generation')
 
 @app.route("/bestIndividual")
 def getBestIndividual():
@@ -174,6 +190,16 @@ def getBestIndividual():
         except Exception as e:
             return {"msg": ["no image"]}
     return {"msg": ["no image"]}
+
+@app.route("/bestFitness")
+def getBestFitness():
+
+    individualFilePath = BEST_INDIVIDUAL_FOLDER + "/info.txt"
+
+    with open(individualFilePath, 'r') as file:
+        file_content = file.read()
+
+    return {"value" : [file_content]}
 
 def onStartup():
     clearDirectory(UPLOAD_FOLDER)

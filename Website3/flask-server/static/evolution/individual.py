@@ -39,9 +39,12 @@ class Individual:
         self.info["area"] = area
 
     def exportInfo(self):
-        lines = ['fitness: ' + str(self.info["fitness"]), 
-                 'distance: ' + str(self.info["distance"]),
-                 'area: ' + str(self.info["area"])]
+        #lines = ['fitness: ' + str(self.info["fitness"]), 
+        #         'distance: ' + str(self.info["distance"]),
+        #         'area: ' + str(self.info["area"])]
+        
+        lines = [str(self.info["fitness"])]
+
         with open(self.getTextPath(), 'w') as f:
             f.write('\n'.join(lines))
         
@@ -129,7 +132,6 @@ class Individual:
             result = result.convert("RGB")  # Convert to RGB before saving as JPEG
             result.save(path)
 
-    #TODO: fix calculatearea
     def calculateArea(self):        
         area = 0
         
