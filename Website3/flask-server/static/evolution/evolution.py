@@ -25,7 +25,6 @@ def startEvolution(): #add emoji paths
     population = Population(populationSize, eliteSize, mutationRate, crossoverRate, tournamentSize, facePath, stickerDirPath) #add emoji path
     for gen in range(50):
         population.evolve()
-        notifyNewGeneration(distance = population.individuals[0].info["distance"])
 
         print('Gen: ' + str(population.nGenerations) + ' Fitness: ' + str(population.individuals[0].getFitness()))
         print(str(population.getBestFitness()))

@@ -1,11 +1,10 @@
 import React, {useState, useEffect, useContext} from 'react'
-import io from 'socket.io-client';
 import EvolutionCell from './EvolutionCell'
 import IndividualCell from './IndividualCell'
 import Banner from './Banner'
 import ProxyContext from '../ProxyContext';
 
-function EvolutionPage({socket}) {
+function EvolutionPage() {
   const proxyUrl = useContext(ProxyContext)
 
   const [loadIndividual, setLoadIndividual] = useState(false);

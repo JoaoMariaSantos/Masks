@@ -6,13 +6,10 @@ import jsonlines
 import numpy as np
 from flask import Flask, request, send_file, jsonify
 from flask_cors import CORS
-from flask_socketio import SocketIO, send, emit
 import helpers
 import openai
 
 app = Flask(__name__)
-CORS(app)
-socketio = SocketIO(app, threaded=True, cors_allowed_origins="*")
 CORS(app)
 
 openai.api_key = helpers.getOpenAIKey()
@@ -157,20 +154,6 @@ def stopGeneration():
     helpers.stopEvolution()
     return  {"msg": ["nice"]}
 
-@socketio.on('message_from_server')
-def handle_message(message):
-    print('Received message:', message)
-    # Process message as needed
-    socketio.emit('message_to_client', 'Hello from Flask!')
-
-@socketio.on('connect')
-def handle_socket_connect():
-    socketio.emit('message_to_client', 'CONNECTED Flask to React')
-
-def notifyNewGeneration(distance):
-    print('sending new generation message')
-    socketio.emit('message_to_client', 'new generation')
-
 @app.route("/bestIndividual")
 def getBestIndividual():
 
@@ -231,5 +214,4 @@ def clearDirectory(path):
     #onStartup()
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True)
-    #app.run(debug = True, threaded=True)
+    app.run(debug = True, threaded=True)
